@@ -149,6 +149,8 @@ UPROGS=\
 	$U/_grind\
 	$U/_wc\
 	$U/_zombie\
+# the lab file added
+	$U/_sleep\
 
 
 ifeq ($(LAB),syscall)

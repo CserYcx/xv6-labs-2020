@@ -79,6 +79,8 @@ runcmd(struct cmd *cmd)
     fprintf(2, "exec %s failed\n", ecmd->argv[0]);
     break;
 
+  // close the file descirptor(0 in general) 
+  // and open will make sure the current file descirptor is newly opened
   case REDIR:
     rcmd = (struct redircmd*)cmd;
     close(rcmd->fd);
