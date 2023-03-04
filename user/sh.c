@@ -146,6 +146,7 @@ getcmd(char *buf, int nbuf)
 int
 main(void)
 {
+  // Question: how the buf get the command line input?
   static char buf[100];
   int fd;
 
@@ -166,6 +167,7 @@ main(void)
         fprintf(2, "cannot cd %s\n", buf+3);
       continue;
     }
+    // is child process
     if(fork1() == 0)
       runcmd(parsecmd(buf));
     wait(0);
@@ -173,6 +175,7 @@ main(void)
   exit(0);
 }
 
+// function wrapped error printing
 void
 panic(char *s)
 {
@@ -186,6 +189,7 @@ fork1(void)
   int pid;
 
   pid = fork();
+  // create a new process wrong
   if(pid == -1)
     panic("fork");
   return pid;

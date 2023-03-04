@@ -18,8 +18,9 @@ main(int argc, char const *argv[])
 
     // get the sleep time
     int time = atoi(argv[1]);
-    printf("nothing happen for a little while.\n");
+    printf("(nothing happen for a little while.)\n");
     sleep(time);
+    // why should exit twice??
     exit(0);
     
 }
