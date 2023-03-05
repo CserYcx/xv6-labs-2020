@@ -42,10 +42,12 @@ ls(char *path)
   }
 
   switch(st.type){
+  // read the file 
   case T_FILE:
     printf("%s %d %d %l\n", fmtname(path), st.type, st.ino, st.size);
     break;
 
+  // read the directory
   case T_DIR:
     if(strlen(path) + 1 + DIRSIZ + 1 > sizeof buf){
       printf("ls: path too long\n");
@@ -59,6 +61,10 @@ ls(char *path)
         continue;
       memmove(p, de.name, DIRSIZ);
       p[DIRSIZ] = 0;
+      for(int i =0;i<sizeof(p);++i){
+        printf("%c",p[i]);
+      }
+      printf("\n");
       if(stat(buf, &st) < 0){
         printf("ls: cannot stat %s\n", buf);
         continue;

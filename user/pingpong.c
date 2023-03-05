@@ -2,6 +2,7 @@
 #include "user/user.h"
 #include "kernel/fcntl.h"
 
+
 /* Some hints:
         1. use the pipe to create pipe
         2. use fork to create child 
@@ -19,6 +20,7 @@ main()
     pipe(p);
 
     if(fork() == 0){
+        // make sure pipe[0] refer to read end of the pipe
         close(0);
         dup(p[0]);
         if(read(p[0],buf1,sizeof(trans)) == sizeof(trans)){
@@ -27,15 +29,18 @@ main()
         close(1);
         dup(p[1]);
         write(p[1],trans,sizeof(trans));
+        close(p[1]);
         exit(p[1]);
     }else{
         close(0);
         dup(p[0]);
         write(p[1],trans,sizeof(trans));
         wait(0);
-        if(read(p[0],buf1,sizeof(trans) == sizeof(trans))){
+        if(read(p[1],buf1,sizeof(trans) == sizeof(trans))){
             printf("%d: received pong\n",getpid());
         }
+        close(p[0]);
+        close(p[1]);
         exit(p[0]);
     }
    
