@@ -10,3 +10,10 @@
         until newline '\n' show 
 */
 
+int 
+main(int argc, char const *argv[])
+{
+    /* code */
+    exit(0);
+}
+
