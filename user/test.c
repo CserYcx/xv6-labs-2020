@@ -4,23 +4,13 @@
 #include "kernel/fs.h"
 #include "kernel/stat.h"
 /* That's a test to test some system call*/
-char *buf;
 
 int 
 main(){
-    int fd;
-    char *p = buf;
-    struct dirent de;
     struct stat st;
-    close(0);
-    fd = open("cat",O_RDONLY);
-    // i think read function is crazy because it can put the string 
-    // into the non-pointer variant
-    // i'm puzzled for its powerful function 
+    int fd = open("cat",O_RDONLY);
     fstat(fd,&st);
-    read(fd,&de,sizeof(de));
-    memmove(p, de.name, DIRSIZ);
-    p[DIRSIZ] = 0;
-    printf("the buf is %s\n",buf);
+    stat("cat",&st);
+    printf("st member is %d\n",st.type);
     exit(0);
 }

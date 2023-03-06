@@ -61,10 +61,10 @@ ls(char *path)
         continue;
       memmove(p, de.name, DIRSIZ);
       p[DIRSIZ] = 0;
+      /*! \test
       for(int i =0;i<sizeof(p);++i){
         printf("%c",p[i]);
-      }
-      printf("\n");
+      }*/
       if(stat(buf, &st) < 0){
         printf("ls: cannot stat %s\n", buf);
         continue;

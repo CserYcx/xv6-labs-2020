@@ -153,6 +153,8 @@ UPROGS=\
 	$U/_pingpong\
 	$U/_find\
 	$U/_test\
+	$U/_pipe1\
+	$U/_xargs\
 
 
 ifeq ($(LAB),syscall)
