@@ -155,6 +155,7 @@ UPROGS=\
 	$U/_test\
 	$U/_pipe1\
 	$U/_xargs\
+	$U/_primes\
 
 
 ifeq ($(LAB),syscall)

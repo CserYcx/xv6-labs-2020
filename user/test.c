@@ -7,10 +7,9 @@
 
 int 
 main(){
-    struct stat st;
-    int fd = open("cat",O_RDONLY);
-    fstat(fd,&st);
-    stat("cat",&st);
-    printf("st member is %d\n",st.type);
+    char *arg[3] = {"echo","sss",0};
+    for(int i=0;i<2;++i){
+        exec("echo",arg);
+    }
     exit(0);
 }
