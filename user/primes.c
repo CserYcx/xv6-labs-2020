@@ -22,7 +22,6 @@ main(){
     for(int i=begin;i<=end;++i){
         buf[0] = begin;
         write(p[1],buf,1);
-        if(fork() == )
     }
     exit(0);
 }
